@@ -90,8 +90,7 @@ export default {
   watch: {
     'dimensions.width': {
       handler(after) {
-        console.log(after);
-        ipcRenderer.send(`${channelPrefix}width`, after);
+        ipcRenderer.invoke(`${channelPrefix}width.set`, after);
       },
       deep: true,
     },
@@ -114,10 +113,8 @@ export default {
       deep: true,
     },
   },
-  mounted() {
-    ipcRenderer.invoke(`${channelPrefix}width`).then((result) => {
-      this.dimensions.width = result;
-    });
+  async mounted() {
+    this.dimensions.width = await ipcRenderer.invoke(`${channelPrefix}width.get`);
     ipcRenderer.invoke(`${channelPrefix}height`).then((result) => {
       this.dimensions.height = result;
     });

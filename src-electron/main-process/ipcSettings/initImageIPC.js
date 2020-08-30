@@ -3,12 +3,11 @@ import { ipcMain } from 'electron';
 const initImageIPC = (window, store) => {
   const chanelPrefix = 'image.';
   // width
-  ipcMain
-    .on(`${chanelPrefix}width`, (event, path) => {
-      store.set('image.width', path);
-    })
-    .handle(`${chanelPrefix}width`, async (event, someArgument) => store.get('image.width'));
-  store.get('image.width');
+  ipcMain.handle(`${chanelPrefix}width.set`, async (event, path) => {
+    store.set('image.width', path);
+  });
+  ipcMain.handle(`${chanelPrefix}width.get`, async () => store.get('image.width'));
+
   // height
   ipcMain
     .on(`${chanelPrefix}height`, (event, path) => {
