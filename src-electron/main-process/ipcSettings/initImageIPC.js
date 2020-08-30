@@ -15,11 +15,10 @@ const initImageIPC = (window, store) => {
   ipcMain.handle(`${chanelPrefix}height.get`, async () => store.get('image.height'));
 
   // color
-  ipcMain
-    .on(`${chanelPrefix}color`, (event, path) => {
-      store.set('image.color', path);
-    })
-    .handle(`${chanelPrefix}color`, async (event, someArgument) => store.get('image.color'));
+  ipcMain.handle(`${chanelPrefix}color.set`, async (event, path) => {
+    store.set('image.color', path);
+  });
+  ipcMain.handle(`${chanelPrefix}color.get`, async () => store.get('image.color'));
 
   // alpha
   ipcMain

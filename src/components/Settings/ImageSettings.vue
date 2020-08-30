@@ -102,7 +102,7 @@ export default {
     },
     'backgroundColor.value': {
       handler(after) {
-        ipcRenderer.send(`${channelPrefix}color`, after);
+        ipcRenderer.send(`${channelPrefix}color.set`, after);
       },
       deep: true,
     },
@@ -116,10 +116,8 @@ export default {
   async mounted() {
     this.dimensions.width = await ipcRenderer.invoke(`${channelPrefix}width.get`);
     this.dimensions.height = await ipcRenderer.invoke(`${channelPrefix}height.get`);
+    this.dimensions.color = await ipcRenderer.invoke(`${channelPrefix}color.get`);
 
-    ipcRenderer.invoke(`${channelPrefix}color`).then((result) => {
-      this.backgroundColor.value = result;
-    });
     ipcRenderer.invoke(`${channelPrefix}alpha`).then((result) => {
       this.alpha.value = result;
     });
