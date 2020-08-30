@@ -108,7 +108,7 @@ export default {
     },
     'alpha.value': {
       handler(after) {
-        ipcRenderer.send(`${channelPrefix}alpha`, after);
+        ipcRenderer.send(`${channelPrefix}alpha.set`, after);
       },
       deep: true,
     },
@@ -117,10 +117,7 @@ export default {
     this.dimensions.width = await ipcRenderer.invoke(`${channelPrefix}width.get`);
     this.dimensions.height = await ipcRenderer.invoke(`${channelPrefix}height.get`);
     this.dimensions.color = await ipcRenderer.invoke(`${channelPrefix}color.get`);
-
-    ipcRenderer.invoke(`${channelPrefix}alpha`).then((result) => {
-      this.alpha.value = result;
-    });
+    this.dimensions.alpha = await ipcRenderer.invoke(`${channelPrefix}alpha.get`);
   },
 };
 </script>

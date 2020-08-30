@@ -21,10 +21,9 @@ const initImageIPC = (window, store) => {
   ipcMain.handle(`${chanelPrefix}color.get`, async () => store.get('image.color'));
 
   // alpha
-  ipcMain
-    .on(`${chanelPrefix}alpha`, (event, path) => {
-      store.set('image.alpha', path);
-    })
-    .handle(`${chanelPrefix}alpha`, async (event, someArgument) => store.get('image.alpha'));
+  ipcMain.handle(`${chanelPrefix}alpha.set`, async (event, path) => {
+    store.set('image.alpha', path);
+  });
+  ipcMain.handle(`${chanelPrefix}alpha.get`, async () => store.get('image.alpha'));
 };
 export default initImageIPC;
