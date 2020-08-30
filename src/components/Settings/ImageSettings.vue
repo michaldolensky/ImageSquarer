@@ -96,7 +96,7 @@ export default {
     },
     'dimensions.height': {
       handler(after) {
-        ipcRenderer.send(`${channelPrefix}height`, after);
+        ipcRenderer.send(`${channelPrefix}height.set`, after);
       },
       deep: true,
     },
@@ -115,9 +115,8 @@ export default {
   },
   async mounted() {
     this.dimensions.width = await ipcRenderer.invoke(`${channelPrefix}width.get`);
-    ipcRenderer.invoke(`${channelPrefix}height`).then((result) => {
-      this.dimensions.height = result;
-    });
+    this.dimensions.height = await ipcRenderer.invoke(`${channelPrefix}height.get`);
+
     ipcRenderer.invoke(`${channelPrefix}color`).then((result) => {
       this.backgroundColor.value = result;
     });
