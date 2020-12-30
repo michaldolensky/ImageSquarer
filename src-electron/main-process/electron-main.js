@@ -82,6 +82,7 @@ const initWatcher = () => {
                 alpha: 1,
               },
             })
+            .flatten({ background: { r: 255, g: 255, b: 255 } })
             .png()
             .toFile(outputFile, (err, info) => {
               // console.log(this);
