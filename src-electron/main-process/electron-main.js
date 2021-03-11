@@ -28,7 +28,7 @@ const storeConfig = {
     image: {},
   },
 };
-if (process.env.DEV) storeConfig.cwd = process.env.DEV_STORE_CONFIG_FOLDER;
+if (process.env.DEV) storeConfig.cwd = path.resolve('./');
 
 const store = new Store(storeConfig);
 
