@@ -13,7 +13,7 @@
     "kill-qusar-process": "taskkill /F /IM \"Quasar App.exe\""
   },
   "dependencies": {
-    "@quasar/extras": "^1.9.9",
+    "@quasar/extras": "^1.9.20",
     "chokidar": "^3.4.3",
     "core-js": "^3.7.0",
     "dotenv": "^8.2.0",
