@@ -1,6 +1,6 @@
 {
   "name": "image-squarer",
-  "version": "0.2.0",
+  "version": "0.4.0",
   "description": "A Quasar Framework app",
   "productName": "ImageSquarer",
   "author": "Michal Dolenský",
@@ -10,7 +10,8 @@
     "test": "echo \"No test specified\" && exit 0",
     "dev": "quasar dev -m electron",
     "build": "quasar build -m electron",
-    "kill-qusar-process": "taskkill /F /IM \"Quasar App.exe\""
+    "kill-qusar-process": "taskkill /F /IM \"Quasar App.exe\"",
+    "prepare": "npx husky install"
   },
   "dependencies": {
     "@quasar/extras": "^1.10.2",
