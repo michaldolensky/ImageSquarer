@@ -172,6 +172,6 @@ app.on('activate', () => {
 
 store.onDidAnyChange((newValue, oldValue) => {
   watcher.close()
-    .then(() => console.log('watacher closed'));
+    .then(() => console.log('watcher closed'));
   initWatcher();
 });
