@@ -14,7 +14,7 @@
     "prepare": "npx husky install"
   },
   "dependencies": {
-    "@quasar/extras": "^1.10.2",
+    "@quasar/extras": "^1.10.3",
     "chokidar": "^3.4.3",
     "core-js": "^3.10.1",
     "dotenv": "^8.2.0",
